@@ -1,0 +1,111 @@
+# baseURI: http://localhost/ns/data
+# imports: http://purl.org/dc/elements/1.1/
+
+@prefix data: <http://localhost/ns/data/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://localhost/ns/data>
+  a owl:Ontology ;
+  dcterms:created "2019-04-10"^^xsd:date ;
+  dcterms:creator <https://orcid.org/0000-0002-3884-3420> ;
+  rdfs:comment "Data-type objects for use as the value of sosa:hasResult" ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+.
+data:Boolean
+  a owl:Class ;
+  rdfs:label "Result true-or-false" ;
+  rdfs:subClassOf <http://www.w3.org/ns/sosa/Result> ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:boolean ;
+      owl:onProperty rdf:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty rdf:value ;
+    ] ;
+.
+data:Concept
+  a owl:Class ;
+  rdfs:label "Classifier" ;
+  rdfs:subClassOf <http://www.w3.org/ns/sosa/Result> ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom <http://www.w3.org/2004/02/skos/core#Concept> ;
+      owl:onProperty rdf:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:standard ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty rdf:value ;
+    ] ;
+.
+data:Count
+  a owl:Class ;
+  rdfs:label "Result integer" ;
+  rdfs:subClassOf <http://www.w3.org/ns/sosa/Result> ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:integer ;
+      owl:onProperty rdf:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty rdf:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty data:uncertainty ;
+    ] ;
+.
+
+data:Text
+  a rdfs:Class ;
+  a owl:Class ;
+  rdfs:label "Result expressed as text" ;
+  rdfs:subClassOf <http://www.w3.org/ns/sosa/Result> ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty rdf:value ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty rdf:value ;
+    ] ;
+.
+data:high
+  a owl:DatatypeProperty ;
+  rdfs:label "High value" ;
+  rdfs:range xsd:decimal ;
+  rdfs:subPropertyOf rdf:value ;
+.
+data:low
+  a owl:DatatypeProperty ;
+  rdfs:label "Low value" ;
+  rdfs:range xsd:decimal ;
+  rdfs:subPropertyOf rdf:value ;
+.
+data:standard
+  a owl:ObjectProperty ;
+  rdfs:label "Measurement standard, scale, uom, controlled vocabulary, taxonomy etc" ;
+.
+data:uncertainty
+  a owl:DatatypeProperty ;
+  rdfs:label "Uncertainty for quantitative values" ;
+  rdfs:range xsd:decimal ;
+  rdfs:subPropertyOf rdf:value ;
+.

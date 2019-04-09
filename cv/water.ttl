@@ -1,0 +1,37 @@
+# baseURI: http://localhost/cv/water
+# imports: http://localhost/cv/water/conductivity
+# imports: http://localhost/cv/water/do
+# imports: http://localhost/cv/water/orp
+# imports: http://localhost/cv/water/ph
+# imports: http://localhost/cv/water/temperature
+# imports: http://localhost/cv/water/turbidity
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix cv-water: <http://localhost/cv/water/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://localhost/cv/water>
+  rdf:type owl:Ontology ;
+  rdfs:comment "This graph imports all the controlled vocabularies used for water data" ;
+  owl:imports cv-water:conductivity ;
+  owl:imports cv-water:do ;
+  owl:imports cv-water:orp ;
+  owl:imports cv-water:ph ;
+  owl:imports cv-water:temperature ;
+  owl:imports cv-water:turbidity ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+.
+cv-water:Classifiers
+  rdf:type skos:Collection ;
+  skos:member cv-water:conductivity ;
+  skos:member cv-water:do ;
+  skos:member cv-water:orp ;
+  skos:member cv-water:ph ;
+  skos:member cv-water:temperature ;
+  skos:member cv-water:turbidity ;
+  skos:prefLabel "All water classifiers" ;
+.

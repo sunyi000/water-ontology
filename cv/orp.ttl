@@ -1,0 +1,53 @@
+# baseURI: http://localhost/cv/water/orp
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/sosa/
+
+@prefix cv-wo: <http://localhost/cv/water/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cv-wo:orp
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports sosa: ;
+.
+
+cv-wo:orp-lt0
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "< 0" ;
+  skos:prefLabel "< 0" ;
+  skos:hiddenLabel "0" ;
+  skos:notation "lt0" ;
+.
+
+cv-wo:orp-gt0
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "> 0" ;
+  skos:prefLabel "> 0" ;
+  skos:hiddenLabel "6" ;
+  skos:notation "gt0" ;
+.
+
+cv-wo:orp-unrecorded
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "Unrecorded." ;
+  skos:prefLabel "Unrecorded" ;
+  skos:hiddenLabel "999" ;
+  skos:notation "null" ;
+.
+
+cv-wo:orps
+  rdf:type skos:Collection ;
+  skos:prefLabel "orp concepts" ;
+  skos:member cv-wo:orp-lt0 ;
+  skos:member cv-wo:orp-gt0 ;
+  skos:member cv-wo:orp-unrecorded ;
+.

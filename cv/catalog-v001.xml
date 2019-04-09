@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://localhost/cv/water/turbidity" uri="turbidity.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost/cv/water/temperature" uri="temperature.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost/cv/water/ph" uri="ph.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost/cv/water/orp" uri="orp.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost/cv/water/do" uri="do.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost/cv/water/conductivity" uri="conductivity.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>

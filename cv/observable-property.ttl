@@ -1,0 +1,70 @@
+# baseURI: http://localhost/cv/op
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/sosa/
+
+@prefix wo-op: <http://localhost/cv/op/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://localhost/cv/op>
+  rdf:type owl:Ontology ;
+  rdfs:comment "Water Monitoring observable properties" ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports sosa: ;
+.
+
+op:temperature
+  rdf:type sosa:ObservableProperty ;
+  skos:exactMatch <http://vocabs.lter-europe.net/EnvThes/22313> ;
+  skos:prefLabel "water temperature" ;
+.
+
+op:do
+  rdf:type sosa:ObservableProperty ;
+  skos:exactMatch <http://vocabs.lter-europe.net/EnvThes/21215> ;
+  skos:prefLabel "dissolved oxygen" ;
+.
+
+op:conductivity
+  rdf:type sosa:ObservableProperty ;
+  skos:exactMatch <http://vocabs.lter-europe.net/EnvThes/30115> ;
+  skos:prefLabel "water conductivity" ;
+.
+
+op:pH
+  rdf:type sosa:ObservableProperty ;
+  skos:exactMatch <http://vocabs.lter-europe.net/EnvThes/21218> ;
+  skos:prefLabel "pH value of water" ;
+.
+
+op:turbidity
+  rdf:type sosa:ObservableProperty ;
+  skos:exactMatch <http://vocabs.lter-europe.net/EnvThes/30114> ;
+  skos:prefLabel "water turbidity" ;
+.
+
+op:orp
+  rdf:type sosa:ObservableProperty ;
+  skos:exactMatch <http://vocabs.lter-europe.net/EnvThes/21216> ;
+  skos:prefLabel "redox potential of water" ;
+.
+
+op:ops
+  rdf:type skos:Collection ;
+  skos:member op:termperature ;
+  skos:member op:do ;
+  skos:member op:conductivity ;
+  skos:member op:pH ;
+  skos:member op:turbidity ;
+  skos:member op:orp ;
+    
+.
+
+sosa:ObservableProperty
+  rdfs:subClassOf skos:Concept ;
+.

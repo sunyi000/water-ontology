@@ -1,0 +1,53 @@
+# baseURI: http://localhost/cv/water/temperature
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/sosa/
+
+@prefix cv-wo: <http://localhost/cv/water/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cv-wo:temperature
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports sosa: ;
+.
+
+cv-wo:temperature-lt22
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "< 22" ;
+  skos:prefLabel "< 22" ;
+  skos:hiddenLabel "9" ;
+  skos:notation "lt22" ;
+.
+
+cv-wo:temperature-gt22
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "> 22" ;
+  skos:prefLabel "> 22" ;
+  skos:hiddenLabel "10" ;
+  skos:notation "gt22" ;
+.
+
+cv-wo:temperature-unrecorded
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "Unrecorded." ;
+  skos:prefLabel "Unrecorded" ;
+  skos:hiddenLabel "999" ;
+  skos:notation "null" ;
+.
+
+cv-wo:temperatures
+  rdf:type skos:Collection ;
+  skos:prefLabel "temperature concepts" ;
+  skos:member cv-wo:temperature-lt22 ;
+  skos:member cv-wo:temperature-gt22 ;
+  skos:member cv-wo:temperature-unrecorded ;
+.

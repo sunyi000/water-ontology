@@ -1,0 +1,53 @@
+# baseURI: http://localhost/cv/water/do
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/sosa/
+
+@prefix cv-wo: <http://localhost/cv/water/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cv-wo:do
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports sosa: ;
+.
+
+cv-wo:do-lt1
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "< 1" ;
+  skos:prefLabel "< 1" ;
+  skos:hiddenLabel "11" ;
+  skos:notation "lt22" ;
+.
+
+cv-wo:do-gt1
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "> 1" ;
+  skos:prefLabel "> 1" ;
+  skos:hiddenLabel "12" ;
+  skos:notation "gt1" ;
+.
+
+cv-wo:do-unrecorded
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "Unrecorded." ;
+  skos:prefLabel "Unrecorded" ;
+  skos:hiddenLabel "999" ;
+  skos:notation "null" ;
+.
+
+cv-wo:dos
+  rdf:type skos:Collection ;
+  skos:prefLabel "do concepts" ;
+  skos:member cv-wo:do-lt1 ;
+  skos:member cv-wo:do-gt1 ;
+  skos:member cv-wo:do-unrecorded ;
+.
