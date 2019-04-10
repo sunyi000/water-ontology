@@ -1,2 +1,2 @@
-schema/catalog*.xml
+**/catalog*.xml
 .project
