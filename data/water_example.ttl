@@ -1,0 +1,214 @@
+# baseURI: http://localhost/dataset/examples/water-data
+# imports: http://localhost/cv/water
+# imports: http://localhost/ns/water-data-types
+# imports: http://www.w3.org/2006/time
+
+@prefix cv: <http://localhost/cv/> .
+@prefix cv-water: <http://localhost/cv/water/> .
+@prefix data: <http://localhost/ns/data/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/> .
+@prefix data-instance: <http://localhost/dataset/examples/water-data/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix op: <http://localhost/cv/op/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wo: <http://localhost/ns/water-monitor/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix ssn-ext: <http://www.w3.org/ns/ssn/ext/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ 
+<http://localhost/dataset/examples/water-data>
+  rdf:type owl:Ontology ;
+  rdfs:comment """data examples from data streams .
+		 """ ;
+  owl:imports cv:water ;
+  owl:imports <http://localhost/ns/water-data-types> ;
+  owl:imports <http://www.w3.org/2006/time> ;
+.
+data-instance:E-001
+  rdf:type wo:ComplexWaterEvent ;
+  dct:modified "2008-06-22T07:40:00"^^xsd:dateTime ;
+  dct:type cv-water:event-type-Industrial-Discharge ;
+  rdfs:label "Industrial discharge event 001" ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+  ssn-ext:hasMember data-instance:P-001-1 ;
+  ssn-ext:hasMember data-instance:T-001-2 ;
+  ssn-ext:hasMember data-instance:C-001-3 ;
+.
+
+data-instance:E-001-1
+  rdf:type wo:ComplexWaterEvent ;
+  dct:modified "2008-06-22T07:40:00"^^xsd:dateTime ;
+  rdfs:label "Industrial discharge event 001" ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+  ssn-ext:hasMember data-instance:P-001-1 ;
+  ssn-ext:hasMember data-instance:T-001-2 ;
+  ssn-ext:hasMember data-instance:C-001-3 ;
+.
+
+data-instance:P-001-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
+  sosa:hasResult cv-water:ph-1-6 ;
+  sosa:hasResult[
+      rdf:type data:low ;
+      rdf:value "5.12"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:pH ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+data-instance:T-001-2
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-01;
+  sosa:hasResult cv-water:turbidity-gt150 ;
+  sosa:hasResult[
+      rdf:type data:high ;
+      rdf:value "195.9"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:turbidity ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+data-instance:C-001-3
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
+  sosa:hasResult cv-water:conductivity-gt10 ;
+  sosa:hasResult[
+      rdf:type data:high ;
+      rdf:value "16.24"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:conductivity ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+data-instance:D-001-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
+  sosa:hasResult cv-water:do-gt1 ;
+  sosa:hasResult[
+      rdf:type data:normal ;
+      rdf:value "2.4"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:do ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+data-instance:O-001-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
+  sosa:hasResult cv-water:orp-unrecorded ;
+  sosa:hasResult[
+      rdf:type data:unknown ;
+      rdf:value "0"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:orp ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+
+data-instance:E-002
+  rdf:type wo:ComplexWaterEvent ;
+  dct:modified "2011-09-01T00:12:00"^^xsd:dateTime ;
+  dct:type cv-water:event-type-Industrial-Discharge ;
+  rdfs:label "Industrial discharge event 002" ;
+  sosa:hasFeatureOfInterest data-instance:Site-BDB ;
+  sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
+  ssn-ext:hasMember data-instance:P-002-1 ;
+  ssn-ext:hasMember data-instance:T-002-2 ;
+  ssn-ext:hasMember data-instance:O-002-3 ;
+.
+data-instance:P-002-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
+  sosa:hasResult cv-water:ph-gt6 ;
+  sosa:hasResult[
+      rdf:type data:high ;
+      rdf:value "7.28"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:pH ;
+  sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
+.
+data-instance:T-002-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-02;
+  sosa:hasResult cv-water:turbidity-gt150 ;
+  sosa:hasResult[
+      rdf:type data:high ;
+      rdf:value "251.1"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:turbidity ;
+  sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
+.
+data-instance:C-002-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
+  sosa:hasResult cv-water:conductivity-lt10 ;
+  sosa:hasResult[
+      rdf:type data:normal ;
+      rdf:value "0.9857"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:conductivity ;
+  sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
+.
+data-instance:D-002-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
+  sosa:hasResult cv-water:do-lt1 ;
+  sosa:hasResult[
+      rdf:type data:normal ;
+      rdf:value "0.08"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:do ;
+  sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
+.
+data-instance:O-002-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
+  sosa:hasResult cv-water:orp-lt0 ;
+  sosa:hasResult[
+      rdf:type data:low ;
+      rdf:value "-0.269"^^xsd:decimal ;
+  ] ;
+  sosa:observedProperty op:orp ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+
+data-instance:Site-BDB
+  rdf:type wo:WaterMonitoringSite ;
+  dct:description "Water monitoring site at Bumdamba" ;
+  dct:identifier "BDB"^^<http://localhost/ns/supplier/wdt/SITE_ID> ;
+  wo:siteName "Bundamda"^^xsd:string ;
+  wo:hasBarrier data-instance:B-BDB-01 ;
+  wo:hasBarrier data-instance:B-BDB-02 ;
+.
+
+data-instance:B-BDB-01
+  rdf:type wo:Barrier ;
+  dct:description "Barrier 1 on Bumdamba site" ;
+  dct:identifier "BDB-01"^^<http://localhost/ns/supplier/wdt/BARRIER_ID> ;
+  wo:barrierName "Bundamda Barrier 1"^^xsd:string ;
+  wo:isBarrierOf data-instance:Site-BDB ;
+.
+
+data-instance:B-BDB-02
+  rdf:type wo:Barrier ;
+  dct:description "Barrier 2 on Bumdamba site" ;
+  dct:identifier "BDB-02"^^<http://localhost/ns/supplier/wdt/BARRIER_ID> ;
+  wo:barrierName "Bundamda Barrier 2"^^xsd:string ;
+  wo:isBarrierOf data-instance:Site-BDB ;
+.
+
+data-instance:T2008-06-22-07-40
+  rdf:type time:Instant ;
+  time:inXSDDate "2008-06-22T07:40:00"^^xsd:dateTime ;
+.
+data-instance:T2011-09-01-00-12
+  rdf:type time:Instant ;
+  time:inXSDDate "2011-09-01T00:12:00"^^xsd:dateTime ;
+.
+

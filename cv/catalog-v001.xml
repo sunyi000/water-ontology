@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://localhost/cv/water/event-type" uri="event-type.ttl"/>
     <uri id="User Entered Import Resolution" name="http://localhost/cv/water/turbidity" uri="turbidity.ttl"/>
     <uri id="User Entered Import Resolution" name="http://localhost/cv/water/temperature" uri="temperature.ttl"/>
     <uri id="User Entered Import Resolution" name="http://localhost/cv/water/ph" uri="ph.ttl"/>

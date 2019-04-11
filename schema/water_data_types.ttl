@@ -1,0 +1,44 @@
+# baseURI: http://localhost/ns/water-data-types
+# imports: http://purl.org/dc/terms/
+
+@prefix wdt: <http://localhost/ns/water-data-types#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://localhost/ns/water-data-types>
+  rdf:type owl:Ontology ;
+  dcterms:created "2019-04-211^^xsd:date ;
+  rdfs:comment "data types for water" ;
+  owl:imports dcterms: ;
+.
+
+<http://localhost/ns/supplier/wdt/BARRIER_ID>
+  rdf:type rdfs:Datatype ;
+  rdfs:label "BARRIER ID" ;
+  rdfs:subClassOf rdfs:Resource ;
+  owl:onDatatype xsd:string ;
+.
+
+<http://localhost/ns/supplier/wdt/SITE_ID>
+  rdf:type rdfs:Datatype ;
+  rdfs:label "Site ID" ;
+  rdfs:subClassOf rdfs:Resource ;
+  owl:onDatatype xsd:String ;
+.
+
+<http://localhost/ns/supplier/wdt/BARRIER_NAME>
+  rdf:type rdfs:Datatype ;
+  rdfs:label "BARRIER NAME" ;
+  rdfs:subClassOf rdfs:Resource ;
+  owl:onDatatype xsd:string ;
+.
+
+<http://localhost/ns/supplier/wdt/SITE_NAME>
+  rdf:type rdfs:Datatype ;
+  rdfs:label "Site NAME" ;
+  rdfs:subClassOf rdfs:Resource ;
+  owl:onDatatype xsd:String ;
+.

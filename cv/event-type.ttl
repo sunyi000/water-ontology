@@ -1,0 +1,59 @@
+# baseURI: http://localhost/cv/water/event-type
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/sosa/
+
+@prefix cv-water: <http://localhost/cv/water/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cv-water:event-type
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports sosa: ;
+.
+cv-water:event-type-Industrial-Discharge
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "An industrial discharge event" ;
+  skos:prefLabel "Industrial discharge" ;
+  skos:hiddenLabel "20" ;
+  skos:notation "Industrial discharge" ;
+.
+cv-water:event-type-Plant-Fault
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "Water plant fault event ." ;
+  skos:prefLabel "Plant Fault" ;
+  skos:hiddenLabel "21" ;
+  skos:notation "Plant Fault" ;
+.
+cv-water:event-type-Heavy-Rainfall
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "Heavy rainfall event at water monitoring site" ;
+  skos:prefLabel "Heavy Rainfall" ;
+  skos:hiddenLabel "21" ;
+  skos:notation "Heavy Rainfall" ;
+.
+cv-water:event-type-Pump-Off
+  rdf:type skos:Concept ;
+  rdf:type sosa:Result ;
+  skos:definition "Water pump turned off" ;
+  skos:prefLabel "Pump Off" ;
+  skos:hiddenLabel "22" ;
+  skos:notation "Pump Off" ;
+.
+
+cv-water:event-types
+  rdf:type skos:Collection ;
+  skos:prefLabel "Event type concepts" ;
+  skos:member cv-water:event-type-Industrial-Discharge ;
+  skos:member cv-water:event-type-Plant-Fault ;
+  skos:member cv-water:event-type-Heavy-Rainfall ;
+  skos:member cv-water:event-type-Pump-Off ;
+.

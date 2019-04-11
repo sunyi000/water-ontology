@@ -17,21 +17,21 @@ cv-wo:ph
   owl:imports sosa: ;
 .
 
-cv-wo:ph-gt5
+cv-wo:ph-gt6
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "> 5" ;
-  skos:prefLabel "> 5" ;
+  skos:definition "> 6" ;
+  skos:prefLabel "> 6" ;
   skos:hiddenLabel "3" ;
-  skos:notation "gt5" ;
+  skos:notation "gt6" ;
 .
-cv-wo:ph-1-5
+cv-wo:ph-1-6
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "1-5" ;
-  skos:prefLabel "1-5" ;
+  skos:definition "1-6" ;
+  skos:prefLabel "1-6" ;
   skos:hiddenLabel "4" ;
-  skos:notation "1-5" ;
+  skos:notation "1-6" ;
 .
 
 cv-wo:ph-unrecorded
@@ -46,7 +46,7 @@ cv-wo:ph-unrecorded
 cv-wo:phs
   rdf:type skos:Collection ;
   skos:prefLabel "pH concepts" ;
-  skos:member cv-wo:ph-1-5 ;
-  skos:member cv-wo:ph-gt5 ;
+  skos:member cv-wo:ph-1-6 ;
+  skos:member cv-wo:ph-gt6 ;
   skos:member cv-wo:ph-unrecorded ;
 .

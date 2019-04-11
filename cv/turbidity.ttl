@@ -17,21 +17,21 @@ cv-wo:turbidity
   owl:imports sosa: ;
 .
 
-cv-wo:turbidity-gt700
+cv-wo:turbidity-gt150
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "> 700" ;
-  skos:prefLabel "> 700" ;
+  skos:definition "> 150" ;
+  skos:prefLabel "> 150" ;
   skos:hiddenLabel "1" ;
-  skos:notation "gt700" ;
+  skos:notation "gt150" ;
 .
-cv-wo:turbidity-1-700
+cv-wo:turbidity-1-150
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "1-700" ;
-  skos:prefLabel "1-700" ;
+  skos:definition "1-150" ;
+  skos:prefLabel "1-150" ;
   skos:hiddenLabel "2" ;
-  skos:notation "1-700" ;
+  skos:notation "1-150" ;
 .
 
 cv-wo:turbidity-unrecorded
@@ -46,7 +46,7 @@ cv-wo:turbidity-unrecorded
 cv-wo:turbidities
   rdf:type skos:Collection ;
   skos:prefLabel "turbidity concepts" ;
-  skos:member cv-wo:turbidity-1-700 ;
-  skos:member cv-wo:turbidity-gt700 ;
+  skos:member cv-wo:turbidity-1-150 ;
+  skos:member cv-wo:turbidity-gt150 ;
   skos:member cv-wo:turbidity-unrecorded ;
 .

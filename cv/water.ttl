@@ -5,6 +5,7 @@
 # imports: http://localhost/cv/water/ph
 # imports: http://localhost/cv/water/temperature
 # imports: http://localhost/cv/water/turbidity
+# imports: http://localhost/cv/water/event-type
 # imports: http://www.w3.org/2004/02/skos/core
 
 @prefix cv-water: <http://localhost/cv/water/> .
@@ -23,6 +24,7 @@
   owl:imports cv-water:ph ;
   owl:imports cv-water:temperature ;
   owl:imports cv-water:turbidity ;
+  owl:imports cv-water:event-type ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
 .
 cv-water:Classifiers
@@ -33,5 +35,6 @@ cv-water:Classifiers
   skos:member cv-water:ph ;
   skos:member cv-water:temperature ;
   skos:member cv-water:turbidity ;
+  skos:member cv-water:event-type ;
   skos:prefLabel "All water classifiers" ;
 .

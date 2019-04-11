@@ -99,13 +99,13 @@ data:low
   rdfs:range xsd:decimal ;
   rdfs:subPropertyOf rdf:value ;
 .
-data:standard
+data:unknown
   a owl:ObjectProperty ;
-  rdfs:label "Measurement standard, scale, uom, controlled vocabulary, taxonomy etc" ;
+  rdfs:label "unknown value" ;
 .
-data:uncertainty
+data:normal
   a owl:DatatypeProperty ;
-  rdfs:label "Uncertainty for quantitative values" ;
+  rdfs:label "normal values" ;
   rdfs:range xsd:decimal ;
   rdfs:subPropertyOf rdf:value ;
 .

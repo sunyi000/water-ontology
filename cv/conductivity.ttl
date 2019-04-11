@@ -17,22 +17,22 @@ cv-wo:conductivity
   owl:imports sosa: ;
 .
 
-cv-wo:conductivity-gt1000
+cv-wo:conductivity-gt10
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "> 1000" ;
-  skos:prefLabel "> 1000" ;
+  skos:definition "> 10" ;
+  skos:prefLabel "> 10" ;
   skos:hiddenLabel "7";
-  skos:notation "gt1000" ;
+  skos:notation "gt10" ;
 .
 
-cv-wo:conductivity-lt1000
+cv-wo:conductivity-lt10
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "< 1000" ;
-  skos:prefLabel "< 1000" ;
+  skos:definition "< 10" ;
+  skos:prefLabel "< 10" ;
   skos:hiddenLabel "8" ;
-  skos:notation "1-700" ;
+  skos:notation "1-10" ;
 .
 
 cv-wo:conductivity-unrecorded
@@ -47,7 +47,7 @@ cv-wo:conductivity-unrecorded
 cv-wo:conductivities
   rdf:type skos:Collection ;
   skos:prefLabel "conductivity concepts" ;
-  skos:member cv-wo:conductivity-lt1000 ;
-  skos:member cv-wo:conductivity-gt1000 ;
+  skos:member cv-wo:conductivity-lt10 ;
+  skos:member cv-wo:conductivity-gt10 ;
   skos:member cv-wo:conductivity-unrecorded ;
 .

@@ -67,7 +67,7 @@ ssn-ext:isMemberOf
   owl:inverseOf ssn-ext:hasMember ;
 .
 
-wo:BarrierName
+wo:barrierName
   rdf:type owl:DatatypeProperty ;
   rdfs:label "Barrier" ;
   rdfs:range xsd:string ;
@@ -79,20 +79,25 @@ wo:siteName
   rdfs:range xsd:string ;
 .
 
-wo:Barrier
+wo:WaterMonitoringSite
  rdf:type owl:Class ;
- rdfs:label "Barrier" ;
+ rdfs:label "Site" ;
  rdfs:subClassOf 
  [ 
      rdf:type owl:Restriction ;
-              owl:onProperty wo:isBarrierOf ;
-              owl:allValuesFrom wo:WaterMonitoringSite
+              owl:onProperty wo:hasBarrier ;
+              owl:allValuesFrom wo:Barrier
  ]  ,
  [
       rdf:type owl:Restriction ;
       owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty wo:BarrierName 
- ] ;
+      owl:onProperty wo:siteName 
+ ] ,
+ [
+   rdf:type owl:Restriction ;
+   owl:onProperty wo:siteName ;
+   owl:allValuesFrom xsd:string
+ ] 
 .
 
 
@@ -116,18 +121,23 @@ wo:PhysicalProperty
  rdfs:subClassOf sosa:ObservableProperty 
 .
 
-wo:WaterMonitoringSite
+wo:Barrier
  rdf:type owl:Class ;
  rdfs:subClassOf sosa:Sample ,
  [ 
    rdf:type owl:Restriction ;
-   owl:onProperty wo:hasBarrier ;
-   owl:someValuesFrom wo:Barrier
+   owl:onProperty wo:isBarrierOf ;
+   owl:someValuesFrom wo:WaterMonitoringSite
  ] ,
  [
    rdf:type owl:Restriction ;
    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-   owl:onProperty wo:siteName ;
+   owl:onProperty wo:barrierName ;
+ ] ,
+ [
+   rdf:type owl:Restriction ;
+   owl:onProperty wo:barrierName ;
+   owl:allValuesFrom xsd:string
  ] 
 .
 
@@ -136,7 +146,7 @@ wo:ComplexWaterEvent rdf:type owl:Class ;
   [ 
     rdf:type owl:Restriction ;
     owl:onProperty sosa:hasFeatureOfInterest ;
-    owl:allValuesFrom wo:WaterMonitoringSite
+    owl:allValuesFrom wo:Barrier
   ],
   [
     rdf:type owl:Restriction ;
@@ -177,7 +187,7 @@ wo:WaterObservation
   [ 
     rdf:type owl:Restriction ;
     owl:onProperty sosa:hasFeatureOfInterest ;
-    owl:allValuesFrom wo:WaterMonitoringSite
+    owl:allValuesFrom wo:Barrier
   ],
   [ 
     rdf:type owl:Restriction ;

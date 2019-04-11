@@ -23,7 +23,7 @@ cv-wo:do-lt1
   skos:definition "< 1" ;
   skos:prefLabel "< 1" ;
   skos:hiddenLabel "11" ;
-  skos:notation "lt22" ;
+  skos:notation "lt1" ;
 .
 
 cv-wo:do-gt1
