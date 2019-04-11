@@ -1,0 +1,50 @@
+prefix cv: <http://localhost/cv/> 
+prefix cv-water: <http://localhost/cv/water/> 
+prefix data: <http://localhost/ns/data/> 
+prefix dct: <http://purl.org/dc/terms/> 
+prefix dwcattributes: <http://rs.tdwg.org/dwc/terms/attributes/> 
+prefix data-instance: <http://localhost/dataset/examples/water-data/> 
+prefix foaf: <http://xmlns.com/foaf/0.1/> 
+prefix locn: <http://www.w3.org/ns/locn#> 
+prefix op: <http://localhost/cv/op/> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix wo: <http://localhost/ns/water-monitor/> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix sosa: <http://www.w3.org/ns/sosa/> 
+prefix ssn: <http://www.w3.org/ns/ssn/> 
+prefix ssn-ext: <http://www.w3.org/ns/ssn/ext/> 
+prefix time: <http://www.w3.org/2006/time#> 
+prefix unit: <http://qudt.org/vocab/unit/> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+select ?time ?site ?barrier
+where
+{
+ ?e rdf:type wo:ComplexWaterEvent .
+	?e dct:modified ?time .
+
+   ?e ssn-ext:hasMember ?_ph .
+  ?_ph sosa:observedProperty op:pH .  
+ ?_ph sosa:hasResult ?_ph_lo .
+  ?_ph_lo rdf:type data:low .
+
+   ?e ssn-ext:hasMember ?_turbidity .
+  ?_turbidity sosa:observedProperty op:turbidity .  
+ ?_turbidity  sosa:hasResult ?_turbidity_hi  .
+  ?_turbidity_hi  rdf:type data:high .
+
+   ?e ssn-ext:hasMember ?_conductivity .
+  ?_conductivity sosa:observedProperty op:conductivity .  
+ ?_conductivity  sosa:hasResult ?_conductivity_hi  .
+  ?_conductivity_hi  rdf:type data:high .
+
+    ?e sosa:hasFeatureOfInterest ?_barrier .
+   ?_barrier rdf:type wo:Barrier .
+   ?_barrier wo:barrierName ?barrier .
+
+  ?_barrier wo:isBarrierOf ?_site .
+ ?_site rdf:type wo:WaterMonitoringSite .
+ ?_site wo:siteName ?site .
+}
