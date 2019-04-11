@@ -17,7 +17,7 @@
 .
 data:Boolean
   a owl:Class ;
-  rdfs:label "Result true-or-false" ;
+  rdfs:label "Result true/false" ;
   rdfs:subClassOf <http://www.w3.org/ns/sosa/Result> ;
   rdfs:subClassOf [
       a owl:Restriction ;
@@ -48,26 +48,6 @@ data:Concept
       a owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
       owl:onProperty rdf:value ;
-    ] ;
-.
-data:Count
-  a owl:Class ;
-  rdfs:label "Result integer" ;
-  rdfs:subClassOf <http://www.w3.org/ns/sosa/Result> ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:allValuesFrom xsd:integer ;
-      owl:onProperty rdf:value ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty rdf:value ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty data:uncertainty ;
     ] ;
 .
 

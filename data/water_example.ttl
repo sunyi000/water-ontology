@@ -44,17 +44,6 @@ data-instance:E-001
   ssn-ext:hasMember data-instance:C-001-3 ;
 .
 
-data-instance:E-001-1
-  rdf:type wo:ComplexWaterEvent ;
-  dct:modified "2008-06-22T07:40:00"^^xsd:dateTime ;
-  rdfs:label "Industrial discharge event 001" ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
-  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
-  ssn-ext:hasMember data-instance:P-001-1 ;
-  ssn-ext:hasMember data-instance:T-001-2 ;
-  ssn-ext:hasMember data-instance:C-001-3 ;
-.
-
 data-instance:P-001-1
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
@@ -116,11 +105,11 @@ data-instance:E-002
   dct:modified "2011-09-01T00:12:00"^^xsd:dateTime ;
   dct:type cv-water:event-type-Industrial-Discharge ;
   rdfs:label "Industrial discharge event 002" ;
-  sosa:hasFeatureOfInterest data-instance:Site-BDB ;
+  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
   ssn-ext:hasMember data-instance:P-002-1 ;
   ssn-ext:hasMember data-instance:T-002-2 ;
-  ssn-ext:hasMember data-instance:O-002-3 ;
+  ssn-ext:hasMember data-instance:O-002-5 ;
 .
 data-instance:P-002-1
   rdf:type wo:WaterObservation ;
@@ -133,7 +122,7 @@ data-instance:P-002-1
   sosa:observedProperty op:pH ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
-data-instance:T-002-1
+data-instance:T-002-2
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B-BDB-02;
   sosa:hasResult cv-water:turbidity-gt150 ;
@@ -144,7 +133,7 @@ data-instance:T-002-1
   sosa:observedProperty op:turbidity ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
-data-instance:C-002-1
+data-instance:C-002-3
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
   sosa:hasResult cv-water:conductivity-lt10 ;
@@ -155,7 +144,7 @@ data-instance:C-002-1
   sosa:observedProperty op:conductivity ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
-data-instance:D-002-1
+data-instance:D-002-4
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
   sosa:hasResult cv-water:do-lt1 ;
@@ -166,7 +155,7 @@ data-instance:D-002-1
   sosa:observedProperty op:do ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
-data-instance:O-002-1
+data-instance:O-002-5
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
   sosa:hasResult cv-water:orp-lt0 ;

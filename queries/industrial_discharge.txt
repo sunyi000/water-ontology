@@ -1,3 +1,21 @@
+################################################
+# Definition of Industrial Discharge Events    #
+# 1. low ph, high turbidity, high conductivity # 
+# 2. high ph, high turbidity, low _orp         #
+################################################
+
+##################################################
+# High level question:                           #
+# What date and time does Industrial Discharge   #
+# event happen at which barrier of which site?   #  
+# High level query:                              #
+# select ?site ?barrier ?time                    #
+# where {?event rdf:type wo:IndustrialDischarge} #
+##################################################
+
+####################################
+# Rewrite high level query to      #
+####################################
 prefix cv: <http://localhost/cv/> 
 prefix cv-water: <http://localhost/cv/water/> 
 prefix data: <http://localhost/ns/data/> 
@@ -19,32 +37,51 @@ prefix time: <http://www.w3.org/2006/time#>
 prefix unit: <http://qudt.org/vocab/unit/> 
 prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
 
-select ?time ?site ?barrier
+select ?site ?time ?barrier
 where
 {
- ?e rdf:type wo:ComplexWaterEvent .
-	?e dct:modified ?time .
-
-   ?e ssn-ext:hasMember ?_ph .
-  ?_ph sosa:observedProperty op:pH .  
- ?_ph sosa:hasResult ?_ph_lo .
-  ?_ph_lo rdf:type data:low .
-
-   ?e ssn-ext:hasMember ?_turbidity .
-  ?_turbidity sosa:observedProperty op:turbidity .  
- ?_turbidity  sosa:hasResult ?_turbidity_hi  .
-  ?_turbidity_hi  rdf:type data:high .
-
-   ?e ssn-ext:hasMember ?_conductivity .
-  ?_conductivity sosa:observedProperty op:conductivity .  
- ?_conductivity  sosa:hasResult ?_conductivity_hi  .
-  ?_conductivity_hi  rdf:type data:high .
-
-    ?e sosa:hasFeatureOfInterest ?_barrier .
-   ?_barrier rdf:type wo:Barrier .
-   ?_barrier wo:barrierName ?barrier .
+  ?e rdf:type wo:ComplexWaterEvent .
+  ?e dct:modified ?time .
+  ?e sosa:hasFeatureOfInterest ?_barrier .
+  ?_barrier rdf:type wo:Barrier .
+  ?_barrier wo:barrierName ?barrier .
 
   ?_barrier wo:isBarrierOf ?_site .
- ?_site rdf:type wo:WaterMonitoringSite .
- ?_site wo:siteName ?site .
+  ?_site rdf:type wo:WaterMonitoringSite .
+  ?_site wo:siteName ?site .
+  {
+    {
+      ?e ssn-ext:hasMember ?_ph .
+      ?_ph sosa:observedProperty op:pH .  
+      ?_ph sosa:hasResult ?_ph_lo .
+      ?_ph_lo rdf:type data:low .
+
+      ?e ssn-ext:hasMember ?_turbidity .
+      ?_turbidity sosa:observedProperty op:turbidity .  
+      ?_turbidity  sosa:hasResult ?_turbidity_hi  .
+      ?_turbidity_hi  rdf:type data:high .
+
+      ?e ssn-ext:hasMember ?_conductivity .
+      ?_conductivity sosa:observedProperty op:conductivity .  
+      ?_conductivity  sosa:hasResult ?_conductivity_lo  .
+      ?_conductivity_lo  rdf:type data:high .
+    }
+    union
+    {
+      ?e ssn-ext:hasMember ?_ph .
+      ?_ph sosa:observedProperty op:pH .  
+      ?_ph sosa:hasResult ?_ph_lo .
+      ?_ph_lo rdf:type data:high .
+
+      ?e ssn-ext:hasMember ?_turbidity .
+      ?_turbidity sosa:observedProperty op:turbidity .  
+      ?_turbidity  sosa:hasResult ?_turbidity_hi  .
+      ?_turbidity_hi  rdf:type data:high .
+
+      ?e ssn-ext:hasMember ?_orp .
+      ?_orp sosa:observedProperty op:orp .  
+      ?_orp  sosa:hasResult ?_orp_lo  .
+      ?_orp_lo  rdf:type data:low .
+    }
+  } .
 }
