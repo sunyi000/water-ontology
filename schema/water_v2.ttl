@@ -1,62 +1,233 @@
 # baseURI: http://localhost/ns/water-monitor
-# imports: http://localhost/ns/data
-# imports: http://www.w3.org/ns/ssn
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://www.w3.org/ns/ssn/
+# imports: http://www.w3.org/ns/ssn/ext/
+# prefix: wo
 
-@prefix wo: <http://localhost/ns/water-monitor#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sosa: <http://www.w3.org/ns/sosa/> .
-@prefix ssn:  <http://www.w3.org/ns/ssn/> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix ssn-ext: <http://www.w3.org/ns/ssn/ext/> .
+@prefix cv: <http://localhost/cv/> .
+@prefix cv-water: <http://localhost/cv/water/> .
+@prefix data: <http://localhost/ns/data> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix op: <http://localhost/cv/op/> .
-@prefix data: <http://localhost/ns/data> .
-@prefix cv: <http://localhost/cv/water> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix ssn-ext: <http://www.w3.org/ns/ssn/ext/> .
+@prefix wo: <http://localhost/ns/water-monitor#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://localhost/ns/water-monitor>
- rdf:type owl:Ontology ;
- owl:imports <http://purl.org/dc/elements/1.1/> ;
- owl:imports ssn: ;
- owl:imports ssn-ext: ;
+  a owl:Ontology ;
+  owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports ssn: ;
+  owl:imports ssn-ext: ;
+  owl:imports cv-water:
+.
+wo:Barrier
+  a owl:Class ;
+  rdfs:subClassOf sosa:Sample ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty wo:barrierName ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty wo:barrierName ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty wo:isBarrierOf ;
+      owl:someValuesFrom wo:WaterMonitoringSite ;
+    ] ;
+.
+wo:ChemicalProperty
+  a owl:Class ;
+  rdfs:subClassOf sosa:ObservableProperty ;
+.
+wo:ComplexEventNotification
+  a owl:Class ;
+  rdfs:subClassOf ssn:Output ;
+.
+wo:ComplexWaterEvent
+  a owl:Class ;
+  rdfs:subClassOf wo:Event ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom wo:Barrier ;
+      owl:onProperty sosa:hasFeatureOfInterest ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom wo:ComplexEventNotificatoin ;
+      owl:onProperty ssn:hasOutput ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom wo:WaterObservation ;
+      owl:onProperty ssn-ext:hasMember ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:dateTime ;
+      owl:onProperty sosa:resultTime ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom sosa:ObservableProperty ;
+      owl:onProperty sosa:observedProperty ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty sosa:resultTime ;
+    ] ;
+.
+wo:Event
+  a owl:Class ;
+.
+wo:IndustrialDischarge
+  a owl:Class ;
+  rdfs:subClassOf wo:ComplexWaterEvent ;
+  owl:equivalentClass [
+  	owl:unionOf (wo:IndustrialDischarge_1
+  				 wo:IndustrialDischarge_2
+  	)
+  ]
+.
+wo:IndustrialDischarge_1
+  a owl:Class ;
+  rdfs:subClassOf wo:IndustrialDischarge ;
+  owl:equivalentClass [ 
+  		owl:intersectionOf 
+  			( 
+  				wo:IndustrialDischarge
+                [ 
+                	rdf:type owl:Restriction ;
+                    owl:onProperty sosa:hasResult ;
+                    owl:allValuesFrom cv-water:conductivity-gt10
+                ]
+                [ 
+                	rdf:type owl:Restriction ;
+                    owl:onProperty sosa:hasResult ;
+                    owl:allValuesFrom cv-water:ph-1-6
+                ]
+                [ 
+                	rdf:type owl:Restriction ;
+                    owl:onProperty sosa:hasResult ;
+                    owl:allValuesFrom cv-water:turbidity-gt150
+                ]
+             ) ;
+         rdf:type owl:Class
+ ] 
 .
 
-wo:hasBarrier 
-  rdf:type owl:ObjectProperty ;
+wo:IndustrialDischarge_2
+  a owl:Class ;
+  rdfs:subClassOf wo:IndustrialDischarge ;
+  owl:equivalentClass [ 
+  		owl:intersectionOf 
+  			( 
+  				wo:IndustrialDischarge
+                [ 
+                	rdf:type owl:Restriction ;
+                    owl:onProperty sosa:hasResult ;
+                    owl:allValuesFrom cv-water:orp-gt0
+                ]
+                [ 
+                	rdf:type owl:Restriction ;
+                    owl:onProperty sosa:hasResult ;
+                    owl:allValuesFrom cv-water:ph-gt6
+                ]
+                [ 
+                	rdf:type owl:Restriction ;
+                    owl:onProperty sosa:hasResult ;
+                    owl:allValuesFrom cv-water:turbidity-gt150
+                ]
+             ) ;
+         rdf:type owl:Class
+ ] 
+.
+
+wo:PhysicalProperty
+  a owl:Class ;
+  rdfs:subClassOf sosa:ObservableProperty ;
+.
+wo:WaterMonitoringSite
+  a owl:Class ;
+  rdfs:label "Site" ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom wo:Barrier ;
+      owl:onProperty wo:hasBarrier ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty wo:siteName ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty wo:siteName ;
+    ] ;
+.
+wo:WaterObservation
+  a owl:Class ;
+  rdfs:subClassOf sosa:Observation ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:allValuesFrom wo:Barrier ;
+      owl:onProperty sosa:hasFeatureOfInterest ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ssn-ext:isMemberOf ;
+      owl:someValuesFrom wo:ComplexWaterEvent ;
+    ] ;
+.
+wo:barrierName
+  a owl:DatatypeProperty ;
+  rdfs:label "Barrier" ;
+  rdfs:range xsd:string ;
+.
+wo:hasBarrier
+  a owl:ObjectProperty ;
   rdfs:subPropertyOf owl:topObjectProperty ;
-  owl:inverseOf wo:isBarrierOf
+  owl:inverseOf wo:isBarrierOf ;
 .
-
-wo:hasSimpleEvent
- rdf:type owl:ObjectProperty ;
- rdfs:subPropertyOf owl:topObjectProperty 
-.
-
-wo:isBarrierOf
- rdf:type owl:ObjectProperty ;
- rdfs:subPropertyOf owl:topObjectProperty 
-.
-
-wo:isEventOf
- rdf:type owl:ObjectProperty ;
- rdfs:subPropertyOf owl:topObjectProperty 
-.
-
 wo:hasEvents
- rdf:type owl:ObjectProperty ;
- rdfs:subPropertyOf owl:topObjectProperty 
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
 .
-
+wo:hasSimpleEvent
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+wo:isBarrierOf
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+wo:isEventOf
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+wo:siteName
+  a owl:DatatypeProperty ;
+  rdfs:label "Site" ;
+  rdfs:range xsd:string ;
+.
 ssn-ext:hasMember
-  rdf:type owl:ObjectProperty ;
-.  
-
+  a owl:ObjectProperty ;
+.
 ssn-ext:isMemberOf
-  rdf:type owl:ObjectProperty ;
+  a owl:ObjectProperty ;
   rdfs:domain [
-      rdf:type owl:Class ;
+      a owl:Class ;
       owl:unionOf (
           sosa:Observation
           wo:ComplexWaterEvent
@@ -66,133 +237,3 @@ ssn-ext:isMemberOf
   rdfs:range wo:ComplexWaterEvent ;
   owl:inverseOf ssn-ext:hasMember ;
 .
-
-wo:barrierName
-  rdf:type owl:DatatypeProperty ;
-  rdfs:label "Barrier" ;
-  rdfs:range xsd:string ;
-.
-
-wo:siteName
-  rdf:type owl:DatatypeProperty ;
-  rdfs:label "Site" ;
-  rdfs:range xsd:string ;
-.
-
-wo:WaterMonitoringSite
- rdf:type owl:Class ;
- rdfs:label "Site" ;
- rdfs:subClassOf 
- [ 
-     rdf:type owl:Restriction ;
-              owl:onProperty wo:hasBarrier ;
-              owl:allValuesFrom wo:Barrier
- ]  ,
- [
-      rdf:type owl:Restriction ;
-      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty wo:siteName 
- ] ,
- [
-   rdf:type owl:Restriction ;
-   owl:onProperty wo:siteName ;
-   owl:allValuesFrom xsd:string
- ] 
-.
-
-
-wo:ChemicalProperty 
-  rdf:type owl:Class ;
-  rdfs:subClassOf sosa:ObservableProperty 
-.
-
-wo:ComplexEventNotification
- rdf:type owl:Class ;
- rdfs:subClassOf ssn:Output 
-.
-
-
-wo:Event 
-  rdf:type owl:Class ;
-.
-
-wo:PhysicalProperty
- rdf:type owl:Class ;
- rdfs:subClassOf sosa:ObservableProperty 
-.
-
-wo:Barrier
- rdf:type owl:Class ;
- rdfs:subClassOf sosa:Sample ,
- [ 
-   rdf:type owl:Restriction ;
-   owl:onProperty wo:isBarrierOf ;
-   owl:someValuesFrom wo:WaterMonitoringSite
- ] ,
- [
-   rdf:type owl:Restriction ;
-   owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-   owl:onProperty wo:barrierName ;
- ] ,
- [
-   rdf:type owl:Restriction ;
-   owl:onProperty wo:barrierName ;
-   owl:allValuesFrom xsd:string
- ] 
-.
-
-wo:ComplexWaterEvent rdf:type owl:Class ;
-  rdfs:subClassOf wo:Event ,
-  [ 
-    rdf:type owl:Restriction ;
-    owl:onProperty sosa:hasFeatureOfInterest ;
-    owl:allValuesFrom wo:Barrier
-  ],
-  [
-    rdf:type owl:Restriction ;
-    owl:onProperty ssn:hasOutput ;
-    owl:allValuesFrom wo:ComplexEventNotificatoin
-  ],
-  [
-    rdf:type owl:Restriction ;
-    owl:onProperty ssn-ext:hasMember ;
-    owl:allValuesFrom wo:WaterObservation
-  ] ,
-  [
-   rdf:type owl:Restriction ;     
-   owl:onProperty sosa:resultTime ;
-   owl:allValuesFrom xsd:dateTime;
-  ] , 
-  [
-  	rdf:type owl:Restriction ;
-    owl:onProperty sosa:observedProperty ;
-    owl:allValuesFrom sosa:ObservableProperty
-  ] ,
-  [
-    rdf:type owl:Restriction ;     
-    owl:minCardinality "1"^^xsd:nonNegativeInteger;
-   	owl:onProperty sosa:resultTime 
-  	 
-  ]
-.
-
-wo:IndustrialDischarge 
-  rdf:type owl:Class ;
-  rdfs:subClassOf wo:ComplexWaterEvent 
-.
-
-wo:WaterObservation 
-  rdf:type owl:Class ;
-  rdfs:subClassOf sosa:Observation ,
-  [ 
-    rdf:type owl:Restriction ;
-    owl:onProperty sosa:hasFeatureOfInterest ;
-    owl:allValuesFrom wo:Barrier
-  ],
-  [ 
-    rdf:type owl:Restriction ;
-    owl:onProperty ssn-ext:isMemberOf ;
-    owl:someValuesFrom wo:ComplexWaterEvent
-  ]
-  
-  .
