@@ -10,7 +10,7 @@
 
 <http://localhost/ns/water-data-types>
   rdf:type owl:Ontology ;
-  dcterms:created "2019-04-211^^xsd:date ;
+  dcterms:created "2019-04-21"^^xsd:date ;
   rdfs:comment "data types for water" ;
   owl:imports dcterms: ;
 .
