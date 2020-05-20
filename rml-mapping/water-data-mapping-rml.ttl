@@ -22,14 +22,17 @@
 @prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<#WaterDataMapping>
+@base <http://localhost/base/> .
+
+<#WaterDataMapping> 
+  a rr:TriplesMap;
   rml:logicalSource [
-  	 rml:source "/home/yisun/";
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
   	 rml:referenceFormulation ql:CSV
   ];
 
   rr:subjectMap [
-  	rr:template data-instance:{eventId};
+  	rr:template "http://localhost/dataset/examples/water-data/{eventId}";
   	rr:class wo:ComplexWaterEvent
   ];
 
@@ -96,11 +99,18 @@
 	  	rr:objectMap [
 	  		rr:parentTriplesMap <#ORPMapping>
 	  	]
-  ];    
+  ] .
 
-<#ORPMapping>
+<#ORPMapping>  
+  a rr:TriplesMap;
+  
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
+  ];
+  
   rr:subjectMap [
-  	rr:template data-instance:O-{timestamp};
+  	rr:template "http://localhost/dataset/examples/water-data/O-{timestamp}";
   	rr:class wo:WaterObservation
   ];
 
@@ -112,7 +122,7 @@
   ];   
 
   rr:predicateObjectMap [
-	  rr:predicate sosa:observedProperty
+	  rr:predicate sosa:observedProperty;
 	  	rr:objectMap [
 	  		rr:template op:orp
 	  	]
@@ -125,16 +135,22 @@
   ];  
 
   rr:predecateObjectMap [
-  	rr:predicate sosa:hasResult
+  	rr:predicate sosa:hasResult;
   	rr:objectMap [
   		rml:reference "ORP"
   	]
-  ];
+  ] .
 
 
 <#TurbidityMapping>
+  a rr:TriplesMap;
+  
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
+  ];
   rr:subjectMap [
-  	rr:template data-instance:T-{timestamp};
+  	rr:template "http://localhost/dataset/examples/water-data/T-{timestamp}";
   	rr:class wo:WaterObservation
   ];
 
@@ -146,7 +162,7 @@
   ];   
 
   rr:predicateObjectMap [
-	  rr:predicate sosa:observedProperty
+	  rr:predicate sosa:observedProperty;
 	  	rr:objectMap [
 	  		rr:template op:turbidity
 	  	]
@@ -159,15 +175,21 @@
   ];  
 
   rr:predecateObjectMap [
-  	rr:predicate sosa:hasResult
+  	rr:predicate sosa:hasResult;
   	rr:objectMap [
   		rml:reference "turbidity"
   	]
-  ];
+  ] .
 
 <#pHMapping>
+  a rr:TriplesMap;
+  
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
+  ];
   rr:subjectMap [
-  	rr:template data-instance:P-{timestamp};
+  	rr:template "http://localhost/dataset/examples/water-data/P-{timestamp}";
   	rr:class wo:WaterObservation
   ];
 
@@ -179,7 +201,7 @@
   ];   
 
   rr:predicateObjectMap [
-	  rr:predicate sosa:observedProperty
+	  rr:predicate sosa:observedProperty;
 	  	rr:objectMap [
 	  		rr:template op:pH
 	  	]
@@ -192,15 +214,21 @@
   ];  
 
   rr:predecateObjectMap [
-  	rr:predicate sosa:hasResult
+  	rr:predicate sosa:hasResult;
   	rr:objectMap [
   		rml:reference "pH"
   	]
-  ];
+  ] .
 
-<#ConductivityMapping>
+<#ConductivityMapping> 
+  a rr:TriplesMap;
+  
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
+  ];
   rr:subjectMap [
-  	rr:template data-instance:C-{timestamp};
+  	rr:template "http://localhost/dataset/examples/water-data/C-{timestamp}";
   	rr:class wo:WaterObservation
   ];
 
@@ -212,7 +240,7 @@
   ];   
 
   rr:predicateObjectMap [
-	  rr:predicate sosa:observedProperty
+	  rr:predicate sosa:observedProperty;
 	  	rr:objectMap [
 	  		rr:template op:conductivity
 	  	]
@@ -225,15 +253,21 @@
   ];  
 
   rr:predecateObjectMap [
-  	rr:predicate sosa:hasResult
+  	rr:predicate sosa:hasResult;
   	rr:objectMap [
   		rml:reference "Conductivity"
   	]
-  ];
+  ] .
 
 <#DOMapping>
+  a rr:TriplesMap;
+  
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
+  ];
   rr:subjectMap [
-  	rr:template data-instance:D-{timestamp};
+  	rr:template "http://localhost/dataset/examples/water-data/D-{timestamp}";
   	rr:class wo:WaterObservation
   ];
 
@@ -245,7 +279,7 @@
   ];   
 
   rr:predicateObjectMap [
-	  rr:predicate sosa:observedProperty
+	  rr:predicate sosa:observedProperty;
 	  	rr:objectMap [
 	  		rr:template op:do
 	  	]
@@ -258,15 +292,21 @@
   ];  
 
   rr:predecateObjectMap [
-  	rr:predicate sosa:hasResult
+  	rr:predicate sosa:hasResult;
   	rr:objectMap [
-  		rml:reference "DO"
+  		rml:reference "disOxy"
   	]
-  ];
+  ] .
 
 <#TemperatureMapping>
+  a rr:TriplesMap;
+  
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
+  ];
   rr:subjectMap [
-  	rr:template data-instance:P-{timestamp};
+  	rr:template "http://localhost/dataset/examples/water-data/P-{timestamp}";
   	rr:class wo:WaterObservation
   ];
 
@@ -278,7 +318,7 @@
   ];   
 
   rr:predicateObjectMap [
-	  rr:predicate sosa:observedProperty
+	  rr:predicate sosa:observedProperty;
 	  	rr:objectMap [
 	  		rr:template op:temperature
 	  	]
@@ -291,16 +331,20 @@
   ];  
 
   rr:predecateObjectMap [
-  	rr:predicate sosa:hasResult
+  	rr:predicate sosa:hasResult;
   	rr:objectMap [
   		rml:reference "temperature"
   	]
+  ] .
+
+
+<#BarrierMapping> a rr:TriplesMap;
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
   ];
-
-
-<#BarrierMapping>
   rr:subjectMap [
-  	rr:template data-instance:{barrierId};
+  	rr:template "http://localhost/dataset/examples/water-data/B-{barrierId}";
   	rr:class wo:Barrier
   ];
 
@@ -313,22 +357,29 @@
   ];
 
   rr:predicateObjectMap [
-  rr:predicate wo:barrierName;
-  rr:objectMap [
+    rr:predicate wo:barrierName;
+    rr:objectMap [
   		rml:reference "barrierId";
   		rr:datatype xsd:string
   	]
   ];
+  
   rr:predicateObjectMap [
   	rr:predicate wo:isBarrierOf;
   	rr:objectMap [
   		rr:parentTriplesMap <#SiteMapping>
   	]
-  ];
+  ] .
 
-<#SiteMapping>
+<#SiteMapping> 
+  a rr:TriplesMap;
+  
+  rml:logicalSource [
+  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:referenceFormulation ql:CSV
+  ];
   rr:subjectMap [
-  	rr:template data-instance:{siteId};
+  	rr:template "http://localhost/dataset/examples/water-data/S-{siteId}";
   	rr:class wo:WaterMonitoringSite
   ];
 
@@ -339,17 +390,19 @@
   		rr:datatype xsd:string
   	]
   ];
+  
   rr:predicateObjectMap [
   	rr:predicate dct:description;
   	rr:objectMap [
-  		rr:template "Water monitoring site at {siteId}"
+  		rr:template "Water monitoring site at {siteId}";
   		rr:datatype xsd:string
   	]
   ];
+  
   rr:predicateObjectMap [
   	rr:predicate wo:siteName;
   	rr:objectMap [
   		rml:reference "siteId";
   		rr:datatype xsd:string
   	]
-  ];
+  ] .
