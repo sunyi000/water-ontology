@@ -37,17 +37,18 @@ data-instance:E-001
   dct:modified "2008-06-22T07:40:00"^^xsd:dateTime ;
   dct:type cv-water:event-type-Industrial-Discharge ;
   rdfs:label "Industrial discharge event 001" ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
+  sosa:hasFeatureOfInterest data-instance:B1 ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
   ssn-ext:hasMember data-instance:P-001-1 ;
   ssn-ext:hasMember data-instance:T-001-2 ;
   ssn-ext:hasMember data-instance:C-001-3 ;
+  ssn-ext:hasMember data-instance:O-001-1 ;
+  ssn-ext:hasMember data-instance:D-001-1 ;
 .
 
 data-instance:P-001-1
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
-  sosa:hasResult cv-water:ph-1-6 ;
+  sosa:hasFeatureOfInterest data-instance:B1 ;
   sosa:hasResult[
       rdf:type data:low ;
       rdf:value "5.12"^^xsd:decimal ;
@@ -57,8 +58,7 @@ data-instance:P-001-1
 .
 data-instance:T-001-2
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-01;
-  sosa:hasResult cv-water:turbidity-gt150 ;
+  sosa:hasFeatureOfInterest data-instance:B1;
   sosa:hasResult[
       rdf:type data:high ;
       rdf:value "195.9"^^xsd:decimal ;
@@ -68,8 +68,7 @@ data-instance:T-001-2
 .
 data-instance:C-001-3
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
-  sosa:hasResult cv-water:conductivity-gt10 ;
+  sosa:hasFeatureOfInterest data-instance:B1 ;
   sosa:hasResult[
       rdf:type data:high ;
       rdf:value "16.24"^^xsd:decimal ;
@@ -79,8 +78,7 @@ data-instance:C-001-3
 .
 data-instance:D-001-1
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
-  sosa:hasResult cv-water:do-gt1 ;
+  sosa:hasFeatureOfInterest data-instance:B1 ;
   sosa:hasResult[
       rdf:type data:normal ;
       rdf:value "2.4"^^xsd:decimal ;
@@ -90,8 +88,7 @@ data-instance:D-001-1
 .
 data-instance:O-001-1
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-01 ;
-  sosa:hasResult cv-water:orp-unrecorded ;
+  sosa:hasFeatureOfInterest data-instance:B1 ;
   sosa:hasResult[
       rdf:type data:unknown ;
       rdf:value "0"^^xsd:decimal ;
@@ -105,16 +102,17 @@ data-instance:E-002
   dct:modified "2011-09-01T00:12:00"^^xsd:dateTime ;
   dct:type cv-water:event-type-Industrial-Discharge ;
   rdfs:label "Industrial discharge event 002" ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
+  sosa:hasFeatureOfInterest data-instance:B2 ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
   ssn-ext:hasMember data-instance:P-002-1 ;
   ssn-ext:hasMember data-instance:T-002-2 ;
+  ssn-ext:hasMember data-instance:C-002-3 ;
+  ssn-ext:hasMember data-instance:D-002-4 ;
   ssn-ext:hasMember data-instance:O-002-5 ;
 .
 data-instance:P-002-1
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
-  sosa:hasResult cv-water:ph-gt6 ;
+  sosa:hasFeatureOfInterest data-instance:B2 ;
   sosa:hasResult[
       rdf:type data:high ;
       rdf:value "7.28"^^xsd:decimal ;
@@ -124,8 +122,7 @@ data-instance:P-002-1
 .
 data-instance:T-002-2
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-02;
-  sosa:hasResult cv-water:turbidity-gt150 ;
+  sosa:hasFeatureOfInterest data-instance:B2;
   sosa:hasResult[
       rdf:type data:high ;
       rdf:value "251.1"^^xsd:decimal ;
@@ -135,8 +132,7 @@ data-instance:T-002-2
 .
 data-instance:C-002-3
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
-  sosa:hasResult cv-water:conductivity-lt10 ;
+  sosa:hasFeatureOfInterest data-instance:B2 ;
   sosa:hasResult[
       rdf:type data:normal ;
       rdf:value "0.9857"^^xsd:decimal ;
@@ -146,8 +142,7 @@ data-instance:C-002-3
 .
 data-instance:D-002-4
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
-  sosa:hasResult cv-water:do-lt1 ;
+  sosa:hasFeatureOfInterest data-instance:B2 ;
   sosa:hasResult[
       rdf:type data:normal ;
       rdf:value "0.08"^^xsd:decimal ;
@@ -157,8 +152,7 @@ data-instance:D-002-4
 .
 data-instance:O-002-5
   rdf:type wo:WaterObservation ;
-  sosa:hasFeatureOfInterest data-instance:B-BDB-02 ;
-  sosa:hasResult cv-water:orp-lt0 ;
+  sosa:hasFeatureOfInterest data-instance:B2 ;
   sosa:hasResult[
       rdf:type data:low ;
       rdf:value "-0.269"^^xsd:decimal ;
@@ -172,11 +166,11 @@ data-instance:Site-BDB
   dct:description "Water monitoring site at Bumdamba" ;
   dct:identifier "BDB"^^<http://localhost/ns/supplier/wdt/SITE_ID> ;
   wo:siteName "Bundamda"^^xsd:string ;
-  wo:hasBarrier data-instance:B-BDB-01 ;
-  wo:hasBarrier data-instance:B-BDB-02 ;
+  wo:hasBarrier data-instance:B1 ;
+  wo:hasBarrier data-instance:B2 ;
 .
 
-data-instance:B-BDB-01
+data-instance:B1
   rdf:type wo:Barrier ;
   dct:description "Barrier 1 on Bumdamba site" ;
   dct:identifier "BDB-01"^^<http://localhost/ns/supplier/wdt/BARRIER_ID> ;
@@ -184,7 +178,7 @@ data-instance:B-BDB-01
   wo:isBarrierOf data-instance:Site-BDB ;
 .
 
-data-instance:B-BDB-02
+data-instance:B2
   rdf:type wo:Barrier ;
   dct:description "Barrier 2 on Bumdamba site" ;
   dct:identifier "BDB-02"^^<http://localhost/ns/supplier/wdt/BARRIER_ID> ;

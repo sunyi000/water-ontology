@@ -21,13 +21,14 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
 
 @base <http://localhost/base/> .
 
 <#WaterDataMapping> 
   a rr:TriplesMap;
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
 
@@ -105,7 +106,7 @@
   a rr:TriplesMap;
   
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   
@@ -134,10 +135,10 @@
 	  	]
   ];  
 
-  rr:predecateObjectMap [
+  rr:predicateObjectMap [
   	rr:predicate sosa:hasResult;
   	rr:objectMap [
-  		rml:reference "ORP"
+  	   rr:parentTriplesMap <#ORPResultMapping>
   	]
   ] .
 
@@ -146,7 +147,7 @@
   a rr:TriplesMap;
   
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -174,10 +175,10 @@
 	  	]
   ];  
 
-  rr:predecateObjectMap [
+  rr:predicateObjectMap [
   	rr:predicate sosa:hasResult;
   	rr:objectMap [
-  		rml:reference "turbidity"
+		rr:parentTriplesMap <#TurbResultMapping>
   	]
   ] .
 
@@ -185,7 +186,7 @@
   a rr:TriplesMap;
   
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -213,10 +214,10 @@
 	  	]
   ];  
 
-  rr:predecateObjectMap [
+  rr:predicateObjectMap [
   	rr:predicate sosa:hasResult;
   	rr:objectMap [
-  		rml:reference "pH"
+       rr:parentTriplesMap <#pHResultMapping>
   	]
   ] .
 
@@ -224,7 +225,7 @@
   a rr:TriplesMap;
   
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -252,10 +253,10 @@
 	  	]
   ];  
 
-  rr:predecateObjectMap [
+  rr:predicateObjectMap [
   	rr:predicate sosa:hasResult;
   	rr:objectMap [
-  		rml:reference "Conductivity"
+       rr:parentTriplesMap <#CondResultMapping>
   	]
   ] .
 
@@ -263,7 +264,7 @@
   a rr:TriplesMap;
   
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -291,10 +292,10 @@
 	  	]
   ];  
 
-  rr:predecateObjectMap [
+  rr:predicateObjectMap [
   	rr:predicate sosa:hasResult;
   	rr:objectMap [
-  		rml:reference "disOxy"
+        rr:parentTriplesMap <#DOResultMapping>
   	]
   ] .
 
@@ -302,11 +303,11 @@
   a rr:TriplesMap;
   
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
-  	rr:template "http://localhost/dataset/examples/water-data/P-{timestamp}";
+  	rr:template "http://localhost/dataset/examples/water-data/Temp-{timestamp}";
   	rr:class wo:WaterObservation
   ];
 
@@ -330,17 +331,150 @@
 	  	]
   ];  
 
-  rr:predecateObjectMap [
+  rr:predicateObjectMap [
   	rr:predicate sosa:hasResult;
   	rr:objectMap [
-  		rml:reference "temperature"
+        rr:parentTriplesMap <#TempResultMapping>
   	]
   ] .
 
+<#TempResultMapping>
+  rml:logicalSource [
+         rml:source <#CSVW_source>;
+         rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+      rr:termType rr:BlankNode
+  ];
+  rr:predicateObjectMap [
+       rr:predicate wo:hasFlag;
+           rr:objectMap [
+                   rml:reference "tempFlag"
+          ]
+  ];
+  rr:predicateObjectMap [
+       rr:predicate rdf:value;
+           rr:objectMap [
+                   rml:reference "temperature";
+                   rr:datatype xsd:decimal
+           ]
+  ] .
+  
 
+ <#CondResultMapping>
+  rml:logicalSource [
+         rml:source <#CSVW_source>;
+         rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+      rr:termType rr:BlankNode
+  ];
+  rr:predicateObjectMap [
+       rr:predicate wo:hasFlag;
+           rr:objectMap [
+                   rml:reference "condFlag"
+          ]
+  ];
+  rr:predicateObjectMap [
+       rr:predicate rdf:value;
+           rr:objectMap [
+                   rml:reference "conductivity";
+                   rr:datatype xsd:decimal
+           ]
+  ] .
+  
+<#DOResultMapping>
+  rml:logicalSource [
+         rml:source <#CSVW_source>;
+         rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+      rr:termType rr:BlankNode
+  ];
+  rr:predicateObjectMap [
+       rr:predicate wo:hasFlag;
+           rr:objectMap [
+                   rml:reference "doFlag"
+          ]
+  ];
+  rr:predicateObjectMap [
+       rr:predicate rdf:value;
+           rr:objectMap [
+                   rml:reference "disOxy";
+                   rr:datatype xsd:decimal
+           ]
+  ] .
+  
+<#ORPResultMapping>
+  rml:logicalSource [
+         rml:source <#CSVW_source>;
+         rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+      rr:termType rr:BlankNode
+  ];
+  rr:predicateObjectMap [
+       rr:predicate wo:hasFlag;
+           rr:objectMap [
+                   rml:reference "orpFlag"
+          ]
+  ];
+  rr:predicateObjectMap [
+       rr:predicate rdf:value;
+           rr:objectMap [
+                   rml:reference "orp";
+                   rr:datatype xsd:decimal
+           ]
+  ] .
+  
+<#pHResultMapping>
+  rml:logicalSource [
+         rml:source <#CSVW_source>;
+         rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+      rr:termType rr:BlankNode
+  ];
+  rr:predicateObjectMap [
+       rr:predicate wo:hasFlag;
+           rr:objectMap [
+                   rml:reference "pHFlag"
+          ]
+  ];
+  rr:predicateObjectMap [
+       rr:predicate rdf:value;
+           rr:objectMap [
+                   rml:reference "pH";
+                   rr:datatype xsd:decimal
+           ]
+  ] .
+  
+
+<#TurbResultMapping>
+  rml:logicalSource [
+         rml:source <#CSVW_source>;
+         rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+      rr:termType rr:BlankNode
+  ];
+  rr:predicateObjectMap [
+       rr:predicate wo:hasFlag;
+           rr:objectMap [
+                   rml:reference "turbFlag"
+          ]
+  ];
+  rr:predicateObjectMap [
+       rr:predicate rdf:value;
+           rr:objectMap [
+                   rml:reference "turbidity";
+                   rr:datatype xsd:decimal
+           ]
+  ] .
+  
 <#BarrierMapping> a rr:TriplesMap;
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -375,7 +509,7 @@
   a rr:TriplesMap;
   
   rml:logicalSource [
-  	 rml:source "/home/yisun/water-data/data-all-1.csv";
+  	 rml:source <#CSVW_source>;
   	 rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
@@ -406,3 +540,16 @@
   		rr:datatype xsd:string
   	]
   ] .
+  
+
+  
+ 
+  
+ <#CSVW_source> a csvw:Table;
+    csvw:url "/home/yisun/water-data/data-all-1.csv";
+    csvw:dialet [
+       csvw:trim true;
+    ] .
+ 
+  
+  
