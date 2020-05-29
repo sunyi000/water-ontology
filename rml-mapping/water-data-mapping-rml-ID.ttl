@@ -11,7 +11,7 @@
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix op: <http://localhost/cv/op/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix wo: <http://localhost/ns/water-monitor/> .
+@prefix wo: <http://localhost/ns/water-monitor#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -34,7 +34,8 @@
 
   rr:subjectMap [
   	rr:template "http://localhost/dataset/examples/water-data/{eventId}";
-  	rr:class wo:ComplexWaterEvent
+  	rr:class wo:IndustryDischarge;
+  	rr:class wo:ComplexWaterEvent;
   ];
 
   rr:predicateObjectMap [
@@ -60,12 +61,6 @@
 	  	]
   ];
 
-  rr:predicateObjectMap [
-	  rr:predicate dct:type;
-	  	rr:objectMap [
- 			rr:parentTriplesMap <#EventTypeMapping>
-	  	]
-  ];
   
   rr:predicateObjectMap [
 	  rr:predicate ssn-ext:hasMember;
@@ -109,23 +104,7 @@
 	  	]
   ] .
 
-<#EventTypeMapping>
-  rml:logicalSource [
-         rml:source <#CSVW_source>;
-         rml:referenceFormulation ql:CSV
-  ];
-  rr:subjectMap [
-    rr:template "http://localhost/cv/water/{event}";
-  	rr:class cv-water:;
-  ];
-  rr:predicateObjectMap [
-       rr:predicate dct:type;
-           rr:objectMap [
-                   rml:reference "event";
-                   rr:datatype xsd:string
-           ]
-  ] .
-  
+ 
 <#ORPMapping>  
   a rr:TriplesMap;
   
@@ -569,14 +548,13 @@
   		rml:reference "siteId";
   		rr:datatype xsd:string
   	]
-  ] .
-  
+  ] .  
 
   
  
   
  <#CSVW_source> a csvw:Table;
-    csvw:url "/home/yisun/water-data/water-training/011-labelled.csv";
+    csvw:url "/home/yisun/water-data/water-training/id-event.csv";
     csvw:dialet [
        csvw:trim true;
     ] .

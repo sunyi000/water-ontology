@@ -17,22 +17,22 @@ cv-wo:temperature
   owl:imports sosa: ;
 .
 
-cv-wo:temperature-lt22
+cv-wo:temperature-lt25
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "< 22" ;
-  skos:prefLabel "< 22" ;
+  skos:definition "< 25" ;
+  skos:prefLabel "< 25" ;
   skos:hiddenLabel "9" ;
-  skos:notation "lt22" ;
+  skos:notation "lt25" ;
 .
 
-cv-wo:temperature-gt22
+cv-wo:temperature-gt25
   rdf:type skos:Concept ;
   rdf:type sosa:Result ;
-  skos:definition "> 22" ;
-  skos:prefLabel "> 22" ;
+  skos:definition "> 25" ;
+  skos:prefLabel "> 25" ;
   skos:hiddenLabel "10" ;
-  skos:notation "gt22" ;
+  skos:notation "gt25" ;
 .
 
 cv-wo:temperature-unrecorded

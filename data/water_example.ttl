@@ -32,10 +32,12 @@
   owl:imports <http://localhost/ns/water-data-types> ;
   owl:imports <http://www.w3.org/2006/time> ;
 .
+
+## low ph, high turb,high cond
 data-instance:E-001
   rdf:type wo:ComplexWaterEvent ;
   dct:modified "2008-06-22T07:40:00"^^xsd:dateTime ;
-  dct:type cv-water:event-type-Industrial-Discharge ;
+  dct:type cv-water:Industry-Discharge ;
   rdfs:label "Industrial discharge event 001" ;
   sosa:hasFeatureOfInterest data-instance:B1 ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
@@ -44,63 +46,105 @@ data-instance:E-001
   ssn-ext:hasMember data-instance:C-001-3 ;
   ssn-ext:hasMember data-instance:O-001-1 ;
   ssn-ext:hasMember data-instance:D-001-1 ;
+  ssn-ext:hasMember data-instance:Temp-001-1 ;
+.
+
+data-instance:Temp-001-1
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B1;
+  sosa:hasResult data-instance:TempR-001-1;
+  sosa:observedProperty op:temperature ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+  
+data-instance:TempR-001-1
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "0"^^xsd:decimal;
+  wo:hasFlag "unknown"^^xsd:string;
+  sosa:isResultOf data-instance:Temp-001-1;
 .
 
 data-instance:P-001-1
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B1 ;
-  sosa:hasResult[
-      rdf:type data:low ;
-      rdf:value "5.12"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:PR-001-1;  
   sosa:observedProperty op:pH ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
 .
+
+data-instance:PR-001-1
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "5.12"^^xsd:decimal;
+  wo:hasFlag "low"^^xsd:string;
+  sosa:isResultOf data-instance:P-001-1;
+.
+  
 data-instance:T-001-2
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B1;
-  sosa:hasResult[
-      rdf:type data:high ;
-      rdf:value "195.9"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:TR-001-2;
   sosa:observedProperty op:turbidity ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
 .
+
+data-instance:TR-001-2
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "195.9"^^xsd:decimal;
+  wo:hasFlag "high"^^xsd:string;
+  sosa:isResultOf data-instance:T-001-2;
+.
+
 data-instance:C-001-3
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B1 ;
-  sosa:hasResult[
-      rdf:type data:high ;
-      rdf:value "16.24"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:CR-001-3;
   sosa:observedProperty op:conductivity ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
 .
+
+data-instance:CR-001-3
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "16.24"^^xsd:decimal;
+  wo:hasFlag "high"^^xsd:string;
+  sosa:isResultOf data-instance:C-001-3;
+.
+
 data-instance:D-001-1
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B1 ;
-  sosa:hasResult[
-      rdf:type data:normal ;
-      rdf:value "2.4"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:DR-001-2;
   sosa:observedProperty op:do ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
 .
+
+data-instance:DR-001-2
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "2.4"^^xsd:decimal;
+  wo:hasFlag "high"^^xsd:string;
+  sosa:isResultOf data-instance:D-001-1;
+.
+
 data-instance:O-001-1
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B1 ;
-  sosa:hasResult[
-      rdf:type data:unknown ;
-      rdf:value "0"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:OR-001-2;
+  wo:hasFlag "low"^^xsd:string;
   sosa:observedProperty op:orp ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
 .
 
+data-instance:OR-001-2
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "0"^^xsd:decimal;
+  wo:hasFlag "low"^^xsd:string;
+  sosa:isResultOf data-instance:O-001-1;
+.
+
+
+## high ph, low orp..
 data-instance:E-002
   rdf:type wo:ComplexWaterEvent ;
   dct:modified "2011-09-01T00:12:00"^^xsd:dateTime ;
-  dct:type cv-water:event-type-Industrial-Discharge ;
+  dct:type cv-water:Industry-Discharge ;
   rdfs:label "Industrial discharge event 002" ;
   sosa:hasFeatureOfInterest data-instance:B2 ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
@@ -109,56 +153,92 @@ data-instance:E-002
   ssn-ext:hasMember data-instance:C-002-3 ;
   ssn-ext:hasMember data-instance:D-002-4 ;
   ssn-ext:hasMember data-instance:O-002-5 ;
+  ssn-ext:hasMember data-instance:Temp-002-6 ;
 .
 data-instance:P-002-1
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B2 ;
-  sosa:hasResult[
-      rdf:type data:high ;
-      rdf:value "7.28"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:PR-002-1 ;
   sosa:observedProperty op:pH ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
+data-instance:PR-002-1
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "7.28"^^xsd:decimal;
+  wo:hasFlag "high"^^xsd:string;
+  sosa:isResultOf data-instance:P-002-1;
+.
+
+
 data-instance:T-002-2
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B2;
-  sosa:hasResult[
-      rdf:type data:high ;
-      rdf:value "251.1"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance: TR-002-2;
   sosa:observedProperty op:turbidity ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
+data-instance:TR-002-2
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "251.1"^^xsd:decimal;
+  wo:hasFlag "high"^^xsd:string;
+  sosa:isResultOf data-instance:T-002-2;
+.
+
+
 data-instance:C-002-3
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B2 ;
-  sosa:hasResult[
-      rdf:type data:normal ;
-      rdf:value "0.9857"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance: CR-002-3;
   sosa:observedProperty op:conductivity ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
+data-instance:CR-002-3
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "0.9857"^^xsd:decimal;
+  wo:hasFlag "high"^^xsd:string;
+  sosa:isResultOf data-instance:C-002-3;
+.
+
 data-instance:D-002-4
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B2 ;
-  sosa:hasResult[
-      rdf:type data:normal ;
-      rdf:value "0.08"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:DR-002-4 ;
   sosa:observedProperty op:do ;
   sosa:phenomenonTime data-instance:T2011-09-01-00-12 ;
 .
+data-instance:DR-002-4
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "0.08"^^xsd:decimal;
+  wo:hasFlag "low"^^xsd:string;
+  sosa:isResultOf data-instance:D-002-4;
+.
+
 data-instance:O-002-5
   rdf:type wo:WaterObservation ;
   sosa:hasFeatureOfInterest data-instance:B2 ;
-  sosa:hasResult[
-      rdf:type data:low ;
-      rdf:value "-0.269"^^xsd:decimal ;
-  ] ;
+  sosa:hasResult data-instance:OR-002-5 ;
   sosa:observedProperty op:orp ;
   sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+data-instance:OR-002-5
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "-0.269"^^xsd:decimal;
+  wo:hasFlag "low"^^xsd:string;
+  sosa:isResultOf data-instance:O-002-5;
+.
+
+data-instance:Temp-002-6
+  rdf:type wo:WaterObservation ;
+  sosa:hasFeatureOfInterest data-instance:B2 ;
+  sosa:hasResult data-instance: TempR-002-6 ;
+  sosa:observedProperty op:orp ;
+  sosa:phenomenonTime data-instance:T2008-06-22-07-40 ;
+.
+data-instance:TempR-002-6
+  rdf:type sosa:Result;
+  sosa:hasSimpleResult "20.1"^^xsd:decimal;
+  wo:hasFlag "low"^^xsd:string;
+  sosa:isResultOf data-instance:Temp-002-6;
 .
 
 data-instance:Site-BDB
